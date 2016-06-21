@@ -1,0 +1,262 @@
+/* put your styles here */
+@import "compass/css3";
+
+$gray-dark: #333333;
+$gray-normal: #7a7a7a;
+$gray-light: #cccccc;
+$gray-xlight: #8f8e8e;
+$gray-dark-sub-menu: #434343;
+$white: #ffffff;
+$black: #000000;
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+header{
+	width: 100%;
+	background: $gray-dark;
+	position: relative;
+	top: 0;
+	nav.block-1{
+		ul{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			li{	
+				position: relative;
+				display: inline-block;
+				margin-right: 7%;
+				a{
+					display: inline-block;
+					min-height: 47px;
+					margin-top: 25px;
+					color: $white;
+					font-weight: bold;
+					@include fontSize(15px);
+					text-decoration: none;
+					text-align: left;
+					&.active,
+					&:hover{
+						border-bottom: 4px solid $black;
+					}
+				}
+				.sub-menu{
+					min-width: 500px;
+					background: $white;
+					position: absolute;
+					padding: 15px;
+					left: 0;
+    				top: 72px;
+    				z-index: 100;
+    				@include box-shadow($black 3px 3px 15px);
+    				h4{
+    					margin-top: 0;
+						a{
+							@include fontSize(28px);
+							text-decoration: none;
+							border-bottom: 0;
+							color: $gray-dark-sub-menu;
+							.read-more{
+								@include fontSize(15px);
+								color: $gray-normal;
+								display: inline-block;
+							}
+						}
+    				}
+				}
+				&:hover > .sub-menu{
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+.content{
+	.block-2{
+		ul.menu-garments{
+			display: flex;
+  			flex-wrap: wrap;
+			> li{
+				position: relative;
+				float: left;
+				margin: 0 11px 20px;
+				border-right: 1px solid $gray-light;
+				display: flex;
+				flex-direction: column;
+				padding: 0 21px 30px 0;
+				&:last-child{
+					border-right: 0;
+					padding-right: 0;
+					margin-right: 0;
+				}
+				img{
+					text-align: center;
+				}
+				h4{
+					@include fontSize(18px);
+					color: $gray-xlight;
+				}
+				ul{
+					li{
+						@include fontSize(12px);
+						color: $gray-dark-sub-menu;
+					}
+				}
+				.view-all{
+					@include fontSize(12px);
+					color: $gray-xlight;
+					position: absolute;
+					bottom: 0;
+				}
+			}
+		}
+	}
+	.block-3{
+		padding: 0 0 0 0;
+		.banner-with-text{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			min-height: 385px;
+			display: table;
+			.banner-background{
+				position: absolute;
+				z-index: 0;
+				img{
+					width: 100%;
+					height: auto;
+				}
+			}
+			.banner-content{
+				position: relative;
+				z-index: 10;
+				max-width: 425px;
+				margin: auto;
+				display: table-cell;
+				vertical-align: middle;
+				.banner-inner{
+					margin: 0 auto;
+					h2{
+						margin-top: 0;
+					}
+				}
+			}
+		}
+	}
+	.block-4{
+		.banner-with-text{
+			.banner-content{
+				.banner-label{
+					background-color: $gray-dark;
+					color: $white;
+					@include fontSize(17px);
+					font-weight: bold;
+					display: inline-block;
+					padding: 15px;
+					left: -15px;
+					top: 0;
+					&:after,
+					&:before{
+						content: " ";
+						position: absolute;
+						display: block;
+						width: 0; 
+						height: 0;
+					}
+					&:after{
+						top: 0;
+						right: -30px;
+						border-top: 25px solid transparent;
+						border-bottom: 25px solid transparent; 
+						border-left: 30px solid $gray-dark; 
+					}
+					&:before{
+						bottom: -20px;
+						left: 0px;
+						border-left: 15px solid transparent;
+						border-right: 0px solid transparent;
+						border-top: 20px solid $black;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+	header{
+		nav.block-1{
+			ul{
+				li{
+					width: 100%;
+					a{
+						width: 100%;
+						padding: 0 20px;
+						line-height: 45px;
+						margin-top: 0;
+						&.active,
+						&:hover{
+							border-left: 4px solid $black;
+							border-bottom: 0;
+						}
+					}
+					.sub-menu{
+						min-width: 100%;
+						position: relative;
+						border-box: inherit;
+						top: 0;
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	
+	.block-3{
+		.banner-with-text{
+			.banner-background{
+				top: 50%;
+				margin-top: -25%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.content{
+		.block-2{
+			ul.menu-garments{
+				li:nth-child(2){
+					border-right: 0;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 471px) {
+	.content{
+		.block-2{
+			ul.menu-garments{
+				> li{
+					width: 100%;
+					border-right: 0;
+					padding: 0 23px 30px;
+					margin: 0 0 20px;
+					&:last-child{
+						margin: 0 0 20px;
+						padding: 0 23px 30px;
+					}
+				}
+			}
+		}
+	}
+}

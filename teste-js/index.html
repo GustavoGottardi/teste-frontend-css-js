@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Teste jQuery / JavaScript</title>
+        <style>
+            label, button{
+                display:block;
+            }
+
+            fieldset{
+                display:inline-block;
+            }
+
+            #enviar{
+                display:none;
+            }
+
+            #enviar.active{
+                display:block;
+            }
+
+            label[for="email"]:after {
+                content:"*";
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- 
+
+            Teste de jQuery / JavaScript
+
+            - Abaixo temos um formulário com 3 campos de texto, um campo de seleção múltipla, e um botão de verificação
+            - Após o formulário, temos um bloco para retorno de dados, e finalmente, um link de enviar, atualmente oculto.
+
+            Tarefa:
+                
+                1 - Devemos inserir uma validação para o campo e-mail, adicionando um span.error após o label caso o e-mail tenha sido preenchido incorretamente. Essa validação deve ser executada quando o campo e-mail perde o foco e, também, ao clicar no botão verificador. O item 2 só deverá ser executado caso o e-mail esteja escrito corretamente.
+
+                2 - Ao clicar no botão verificador, ele deverá cancelar o comportamento de envio de formulário e listar todos os dados preenchidos no ul#saida.
+
+                    Ex.:
+                        Nome     : 'Meu Nome',
+                        E-mail*  : 'meu@email.com'
+                        Telefone : '1112345678'
+                        Assunto  : 'HTML, CSS'
+
+                    Sua função de listagem de dados deverá ter um callback que adiciona uma classe 'active' no a#enviar
+
+                3 - Se a página for atualizada ou fechada, um alerta deverá aparecer antes, perguntando se o usuário realmente deseja fazer tal ação
+
+                4 - Se a página for atualizada com campos preenchidos, os campos devem se manter preenchidos, após a página ser carregada
+
+                5 - A função deverá ser dinâmica, ou seja, se eu adicionar novos campos de texto e seleção ou mudar suas ids/names, eles ainda deverão funcionar
+
+                6 - Ao clicar em a#enviar.active, haverá um AJAX:
+
+                    URL               : envia-dados.html
+                    Método            : POST
+                    Data              : Valores preenchidos de todos os campos do formulário
+                    Antes do envio    : Retornar um log de que os dados estão sendo enviados
+                    Sucessão de envio : Retornar um log de que os dados foram enviados
+                    Erro no envio     : Retornar um log de que os dados não foram enviados
+
+                *NÃO É PERMITIDO ALTERAR A ORDEM DO HTML PRÉ-DEFINIDO
+                *NÃO É PERMITIDO ADICIONAR ATRIBUTOS AO HTML PRÉ-DEFINIDO
+
+                *Usar o arquivo js/main.js para inserir seu script
+
+            Bom teste!
+
+        -->
+
+        <form action="" method="post" id="form">
+            <fieldset>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" />
+
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" />
+
+                <label for="telefone">Telefone</label>
+                <input type="text" id="telefone" name="telefone" />
+
+                <label for="assunto">Assunto</label>
+                <select name="assunto" id="assunto" multiple>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="JS">JS</option>
+                </select>
+
+                <button id="valida">Validar informações</button>
+            </fieldset>
+        </form>
+
+        <ul id="saida"></ul>
+        <a href="#" id="enviar">Enviar</a>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
